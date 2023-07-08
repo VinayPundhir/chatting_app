@@ -1,0 +1,146 @@
+<html>
+   <style>
+      .msg-box {
+      position: fixed;
+      bottom: 30;
+      left: 25%;
+      opacity:0.8;height:10%;width:60%;border:none;box-shadow:3px #f2f2f2;
+      }
+      .move-left-first{
+      float:left;
+      width:10%;
+      }
+      .move-left-mid{
+      float:left;
+      width:80%;
+      }
+      .move-left-last{
+      float:left;
+      width:20%
+      }
+
+      .chats{
+       width: 48%;
+       margin: 4% 9% 18% 28%;
+      }
+      .no-border{
+      border:0px none;
+      padding:20px;
+      font-size:15px;
+      }
+   </style>
+   <head>
+      <link rel='stylesheet' href="/static/css/bootstrap.min.css" type="text/css" >
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <script src="/static/min.js"></script>
+   </head>
+   <body style="background-color:#293338">
+      <div style="background-color:#8590950f;overflow:auto;padding:10px"><a class="badge" style="color:white" href="/friends/">Back</a>
+      </div>
+      </br>
+      <div id="chats" class="chats"></div>
+      <script>
+      size = "";
+
+      function show() {
+          $.ajax({
+              url: '/json/{{f_name}}',
+              data: {
+                  'username': 'user'
+              },
+              dataType: 'json',
+              success: function(data) {
+                  var i;
+                  size = data.obj.length;
+                  for (i = 0; i <= data.obj.length; i++) {
+
+                      if (data.obj[i]['name'] == data.user) {
+
+                          if (data.obj[i]['image'] != "") {
+                              $('<div class="badge" style="margin-left:15%;"></div>').html("me").appendTo('#chats');
+                              $('<img src="' + data.obj[i]["image"] + '" style="font-family:arial;width:200px;margin-bottom:5%;background-color:#f2f2f2;padding:12px;border-radius:10px;border:none" class="text text-muted" ></button></br>').appendTo('#chats');
+                              }
+
+                          if (data.obj[i]['msg'] != ""){
+                            $('<div class="badge" style="margin-left:15%;"></div>').html("me").appendTo('#chats');
+                             $('<div style="font-size:15px;font-family:arial;width:85%;margin-bottom:5%;margin-left:15%;padding:10px;border-radius:10px;border:none" class="bg-primary" ></button></br>').html(data.obj[i]['msg']).appendTo('#chats');
+
+                           }
+                      }
+
+
+                      if (data.obj[i]['name'] == data.f_name) {
+                          if (data.obj[i]['image'] != "") {
+                          $('<div class="badge"></div>').html(data.obj[i]['name']).appendTo('#chats');
+                              $('<img src="' + data.obj[i]["image"] + '" style="font-family:arial;width:200px;margin-bottom:5%;margin-right:15%;background-color:#f2f2f2;padding:12px;border-radius:10px;border:none" class="text text-muted" ></button></br>').appendTo('#chats');
+
+                          }
+
+
+
+                          if (data.obj[i]['msg'] != "") {
+                          $('<div class="badge"></div>').html(data.obj[i]['name']).appendTo('#chats');
+                              $('<div style="font-size:15px;font-family:arial;width:85%;margin-bottom:5%;margin-right:15%;background-color:#f2f2f2;padding:12px;border-radius:10px;border:none" class="text text-muted" ></button></br>').html(data.obj[i]['msg']).appendTo('#chats');
+
+                          }
+
+                      }
+
+                  }
+              }
+
+          })
+      }
+
+
+      function check() {
+          $.ajax({
+              url: '/chat_size/{{f_name}}',
+              data: {
+                  'username': 'user'
+              },
+              dataType: 'json',
+              success: function(data) {
+                  if (size == data.size) {} else {
+                      $('#chats').html("");
+                      show();
+                  };
+
+              }
+          })
+      }
+
+      setInterval(check, 1000);
+      show();
+      </script>
+      <div class="msg-box" >
+         <div>
+            <form action="/chatting_process/{{f_name}}" method="post" id="login-form"  enctype="multipart/form-data">
+               {% csrf_token %}
+               <div class="move-left-first">
+                  <input id="f" maxlength="254" name="image"  type="file" placeholder="Image" style="width:0px;height:0px"/>
+                  <div   class="no-border"  onclick="get()"  class="" style="background-color:orange;color:black;height:72%;">||</div>
+               </div>
+               <div class="move-left-mid">
+                  <input  class="no-border" style="width:100%;height:72%;" placeholder="write something" autofocus="" id="id_username" maxlength="137"  name="msg" type="text">
+               </div>
+
+               <div class="move-left-last">
+               </div>
+               <input type="submit"  style="width:0px;height:0px;visibility:hidden" id='sendme'/>
+            </form>
+         </div>
+      </div>
+      <script>
+         function get(){
+         var file =document.getElementById('f');
+         file.click();
+         }
+
+         function send(){
+         var file =document.getElementById('sendme');
+         file.click();
+         }
+      </script>
+   </body>
+</html>

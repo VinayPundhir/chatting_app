@@ -1,0 +1,35 @@
+{% extends "index.html"%}
+{% block content %}
+
+<!--{% include "body.html" %}-->
+</br>
+</br>
+</br>
+<div class="container" >
+
+{% if obj %}
+ {% for n in obj %}
+  <div class="jumbotron pills" style="background-color:#8590950f; margin-top:20px;height:18%;width:100%">
+       <img src="{{ n.image.url }}"class="img img-circle;border:2px solid black" alt="Image is not available"  style="opacity:0.9;height:100px;width:100px;border-radius:100%;border: 10px solid #273338;"/>
+      <span style="font-family:arial;color:white; padding-left:20px;font-size:15px" >{{ n.name}} </span>
+      <b style="font-size:50px;color:{{ n.color }}">.</b>
+      <a href="/chatting/{{n.name}}"  style="float:right" class="btn" >
+          <sapn class="badge badge-secondary" style="background-color:;color:white;padding:8px">chat</span>
+      </a>
+   </div>
+   </br>
+ {% endfor %}
+{% endif %}
+
+
+{% if not obj %}
+  <div class="jumbotron pills" style="background-color:#8590950f; margin-top:20px;height:18%;width:100%">
+   <a href="/decline_request/{{n.name}}" style="margin:0px"class="btn" href="/requests/">
+    <span style="color:white;margin-top:30px;float:right">0 Friends</span>
+   </a>
+  </div></br>
+{% endif %}
+</div>
+
+{% endblock%}
+

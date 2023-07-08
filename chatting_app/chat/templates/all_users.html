@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+{% block content %}
+</br>
+</br>
+</br>
+</br>
+
+<div class="container">
+    {% for n in obj %}
+        <div class="jumbotron pills" style="background-color:#8590950f; margin-top:20px;height:18%;width:100%">
+             <img src="{{ n.image.url }}" class="img img-circle;border:2px solid black" alt="Image is not available" style="opacity:0.9;height:100px;width:100px;border-radius:100%;border: 10px solid #273338;"/>
+             <span style="font-family:arial;color:white; padding-left:20px;font-size:15px" >{{ n.name}} </span>
+                <b style="font-size:50px;color:{{ n.color }}">.</b>
+
+            {% if n.sent %}
+                 <a href="/all_users/"  style="float:right" class="btn" >
+                  <span class="badge badge-secondary" style="float:right;font-size:13px">Request Sent</span></a>
+                  /br>
+            {% endif %}
+
+
+            {% if  n.friend %}
+                 <span type="button" class="badge" style="float:right;font-size:13px">friend</span>
+            {% endif %}
+
+            {% if not n.sent and not n.friend %}
+                 {% if n.name == request.session.name %}
+                <span type="button" class="badge badge-secondary" style="float:right;font-size:13px">Me</span>
+                 {% endif %}
+
+                 {% if n.name != request.session.name %}
+                   <a href="/send_request/{{n.name}}"  style="float:right" class="btn" >
+                   <sapn class="badge badge-secondary" style="background-color:orange;color:black;padding:8px">Send Request</span></a>
+                 {% endif %}
+            {%endif%}
+
+        </div>
+    {% endfor %}
+</div>
+{% endblock%}
