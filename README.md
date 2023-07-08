@@ -42,6 +42,7 @@ Before setting up the app, make sure you have the following installed:
 ## Installation
 
 1. Change to the project directory:
+   ```bash
    cd chatting_app
 
 1. Clone the repository:
