@@ -7,20 +7,11 @@
 The Chatting App is a web application that allows users to create accounts, make friends, and chat with them in real-time. It's built using the Django framework and offers a range of features to enhance the chatting experience.
 
 # Screenshots
-![Screenshot from 2023-07-09 00-23-42](https://github.com/VinayPundhir/chatting_app/assets/51248042/cf74f5b0-107e-4366-9c77-b27dc834c6c4)
-![Screenshot from 2023-07-09 00-23-50](https://github.com/VinayPundhir/chatting_app/assets/51248042/3d8291ee-8379-41c2-9032-b8e38ff7f56b)
-![Screenshot from 2023-07-08 23-45-55](https://github.com/VinayPundhir/chatting_app/assets/51248042/4aae687f-e5ae-4840-9b76-d6aa3068fdf7)
-![Screenshot from 2023-07-08 23-45-23](https://github.com/VinayPundhir/chatting_app/assets/51248042/25ec1b13-c0fe-48f8-b4df-ef8dd4b4d9b8)
-![Screenshot from 2023-07-08 23-44-41](https://github.com/VinayPundhir/chatting_app/assets/51248042/08e278f0-37c9-4888-b408-38a701f4eba8)
-
-
-
-
-
-
-
-
-
+![Screenshot from 2023-07-09 00-23-42](https://github.com/VinayPundhir/chatting_app/assets/51248042/53eb6d03-07b8-4893-a1c6-2d16250c24fa)
+![Screenshot from 2023-07-09 00-23-50](https://github.com/VinayPundhir/chatting_app/assets/51248042/efe7f26c-c654-43f1-bc10-8c34f1d750ab)
+![Screenshot from 2023-07-08 23-45-55](https://github.com/VinayPundhir/chatting_app/assets/51248042/631ee65e-e5db-44fd-8ab9-f48de4c66fed)
+![Screenshot from 2023-07-08 23-45-23](https://github.com/VinayPundhir/chatting_app/assets/51248042/8532802f-c981-4ae9-9d6e-04be3e38e239)
+![Screenshot from 2023-07-08 23-44-41](https://github.com/VinayPundhir/chatting_app/assets/51248042/08276efd-3c6f-4327-83c2-f7e193479073)
 
 
 
